@@ -26,12 +26,12 @@ export class DataService {
     return this.items;
   }
 
-  addItem(item): void {
+  addItem(item: string): void {
     this.items.push(new Item(item));
     this.save();
   }
 
-  deleteItem(id): void {
+  deleteItem(id: string): void {
     this.items = this.items.filter(item => item.id !== id);
     this.save();
   }
@@ -41,17 +41,17 @@ export class DataService {
     this.save();
   }
 
-  editItem(item): void {
+  editItem(item: { edit: boolean }): void {
     item.edit = true;
     this.save();
   }
 
-  doneEdit(item) {
+  doneEdit(item: { edit: boolean }) {
     item.edit = false;
     this.save();
   }
 
-  completeItem(item) {
+  completeItem(item: { done: boolean }) {
     item.done = !item.done;
     this.save();
   }

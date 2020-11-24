@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { DataService } from "./data.service";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "my-app",
@@ -8,9 +8,9 @@ import { FormBuilder } from "@angular/forms";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  form;
+  form: FormGroup;
   constructor(
-    public dataService: DataService,
+    private dataService: DataService,
     private formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
@@ -18,8 +18,8 @@ export class AppComponent {
     });
   }
 
-  test() {
-    console.log("test");
+  getItems() {
+    return this.dataService.getItems;
   }
 
   addItem() {
@@ -31,15 +31,15 @@ export class AppComponent {
     this.form.reset();
   }
 
-  doneEdit(item) {
+  doneEdit(item: { edit: boolean }) {
     this.dataService.doneEdit(item);
   }
 
-  editItem(item) {
+  editItem(item: { edit: boolean }) {
     this.dataService.editItem(item);
   }
 
-  deleteItem(id) {
+  deleteItem(id: string) {
     this.dataService.deleteItem(id);
   }
 
@@ -47,7 +47,11 @@ export class AppComponent {
     this.dataService.deleteCompleted();
   }
 
-  completeItem(item) {
+  completeItem(item: { done: boolean }) {
     this.dataService.completeItem(item);
+  }
+
+  save() {
+    this.dataService.save();
   }
 }

@@ -1,35 +1,34 @@
-<h1>My ToDos</h1>
-<form [formGroup]="form" (ngSubmit)="addItem()">
-  <input type="text" formControlName="title" />
-  <button type="submit">
-    Add
-  </button>
-</form>
-<ul>
-  <li *ngFor="let item of this.dataService.getItems">
-    <span class="checkbox"
-      ><input
-        type="checkbox"
-        [(ngModel)]="item.done"
-        (click)="this.dataService.save()"
-    /></span>
-    <span
-      *ngIf="!item.edit; else editingTodo"
-      class="title"
-      (dblclick)="editItem(item)"
-      [ngClass]=" { 'completed' : item.done } "
-      >{{item.title}}</span
-    >
-    <ng-template #editingTodo>
-      <input
-        type="text"
-        [(ngModel)]="item.title"
-        (blur)="doneEdit(item)"
-        (keyup.enter)="doneEdit(item)"
-        autofocus
-      />
-    </ng-template>
-    <button (click)="deleteItem(item.id)">del</button>
-  </li>
-</ul>
-<button (click)="deleteCompleted()">delete completed</button>
+<section class="container">
+  <h1>My ToDos</h1>
+  <form [formGroup]="form" (ngSubmit)="addItem()">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" formControlName="title" />
+      <button class="btn btn-outline-secondary" type="submit">Add</button>
+    </div>
+  </form>
+  <ul>
+    <li *ngFor="let item of getItems()">
+      <span class="checkbox"
+        ><input type="checkbox" [(ngModel)]="item.done" (change)="save()"
+      /></span>
+      <span
+        *ngIf="!item.edit; else editingTodo"
+        class="title"
+        (dblclick)="editItem(item)"
+        [ngClass]=" { 'completed' : item.done } "
+        >{{item.title}}</span
+      >
+      <ng-template #editingTodo>
+        <input
+          type="text"
+          [(ngModel)]="item.title"
+          (blur)="doneEdit(item)"
+          (keyup.enter)="doneEdit(item)"
+          autofocus
+        />
+      </ng-template>
+      <button (click)="deleteItem(item.id)">del</button>
+    </li>
+  </ul>
+  <button (click)="deleteCompleted()">delete completed</button>
+</section>
