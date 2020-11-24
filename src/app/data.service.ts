@@ -51,6 +51,11 @@ export class DataService {
     this.save();
   }
 
+  completeItem(item) {
+    item.done = !item.done;
+    this.save();
+  }
+
   save(): void {
     localStorage.setItem("state", JSON.stringify(this.items));
     console.log(JSON.parse(localStorage.getItem("state")));

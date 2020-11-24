@@ -8,7 +8,10 @@
 <ul>
   <li *ngFor="let item of this.dataService.getItems">
     <span class="checkbox"
-      ><input type="checkbox" [(ngModel)]="item.done"
+      ><input
+        type="checkbox"
+        [(ngModel)]="item.done"
+        (change)="completeItem(item)"
     /></span>
     <span
       *ngIf="!item.edit; else editingTodo"

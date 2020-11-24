@@ -46,4 +46,8 @@ export class AppComponent {
   deleteCompleted() {
     this.dataService.deleteCompleted();
   }
+
+  completeItem(item) {
+    this.dataService.completeItem(item);
+  }
 }
