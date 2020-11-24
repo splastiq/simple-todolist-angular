@@ -8,9 +8,12 @@
   </form>
   <ul>
     <li *ngFor="let item of getItems()">
-      <span class="checkbox"
-        ><input type="checkbox" [(ngModel)]="item.done" (change)="save()"
-      /></span>
+      ><input
+        class="mr-2"
+        type="checkbox"
+        [(ngModel)]="item.done"
+        (change)="save()"
+      />
       <span
         *ngIf="!item.edit; else editingTodo"
         class="title"
@@ -27,7 +30,12 @@
           autofocus
         />
       </ng-template>
-      <button (click)="deleteItem(item.id)">del</button>
+      <button
+        class="btn btn-sm btn-outline-danger"
+        (click)="deleteItem(item.id)"
+      >
+        del
+      </button>
     </li>
   </ul>
   <button (click)="deleteCompleted()">delete completed</button>
