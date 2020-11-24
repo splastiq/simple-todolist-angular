@@ -42,4 +42,8 @@ export class AppComponent {
   deleteItem(id) {
     this.dataService.deleteItem(id);
   }
+
+  deleteCompleted() {
+    this.dataService.deleteCompleted();
+  }
 }

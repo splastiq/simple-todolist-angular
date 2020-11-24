@@ -36,6 +36,11 @@ export class DataService {
     this.save();
   }
 
+  deleteCompleted() {
+    this.items = this.items.filter(item => item.done === false);
+    this.save();
+  }
+
   editItem(item): void {
     item.edit = true;
     this.save();
