@@ -1,13 +1,16 @@
 <section class="container">
-  <h1>My ToDos</h1>
+  <h1 class="display-4 my-3">My ToDos</h1>
   <form [formGroup]="form" (ngSubmit)="addItem()">
     <div class="input-group mb-3">
       <input type="text" class="form-control" formControlName="title" />
       <button class="btn btn-outline-secondary" type="submit">Add</button>
     </div>
   </form>
-  <ul>
-    <li *ngFor="let item of getItems()" class="d-flex justify-content-between">
+  <ul class="list-group list-group-flush">
+    <li
+      *ngFor="let item of getItems()"
+      class="list-group-item d-flex justify-content-between mb-2"
+    >
       <div>
         <input
           class="mr-2"
@@ -40,5 +43,12 @@
       </button>
     </li>
   </ul>
-  <button (click)="deleteCompleted()">delete completed</button>
+  <button class="btn btn-sm btn-light" (click)="deleteCompleted()">
+    delete completed
+  </button>
+</section>
+<section class="info text-black-50 bg-light">
+  <small
+    >If you want to edit the item of the list try to dubble click on it!</small
+  >
 </section>
