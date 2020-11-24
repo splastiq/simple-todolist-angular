@@ -7,29 +7,31 @@
     </div>
   </form>
   <ul>
-    <li *ngFor="let item of getItems()">
-      <input
-        class="mr-2"
-        type="checkbox"
-        [(ngModel)]="item.done"
-        (change)="save()"
-      />
-      <span
-        *ngIf="!item.edit; else editingTodo"
-        class="title"
-        (dblclick)="editItem(item)"
-        [ngClass]=" { 'completed' : item.done } "
-        >{{item.title}}</span
-      >
-      <ng-template #editingTodo>
+    <li *ngFor="let item of getItems()" class="d-flex justify-content-between">
+      <div>
         <input
-          type="text"
-          [(ngModel)]="item.title"
-          (blur)="doneEdit(item)"
-          (keyup.enter)="doneEdit(item)"
-          autofocus
+          class="mr-2"
+          type="checkbox"
+          [(ngModel)]="item.done"
+          (change)="save()"
         />
-      </ng-template>
+        <span
+          *ngIf="!item.edit; else editingTodo"
+          class="title"
+          (dblclick)="editItem(item)"
+          [ngClass]=" { 'completed' : item.done } "
+          >{{item.title}}</span
+        >
+        <ng-template #editingTodo>
+          <input
+            type="text"
+            [(ngModel)]="item.title"
+            (blur)="doneEdit(item)"
+            (keyup.enter)="doneEdit(item)"
+            autofocus
+          />
+        </ng-template>
+      </div>
       <button
         class="btn btn-sm btn-outline-danger float-right"
         (click)="deleteItem(item.id)"
