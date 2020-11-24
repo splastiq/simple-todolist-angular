@@ -8,7 +8,7 @@
   </form>
   <ul>
     <li *ngFor="let item of getItems()">
-      ><input
+      <input
         class="mr-2"
         type="checkbox"
         [(ngModel)]="item.done"
@@ -31,7 +31,7 @@
         />
       </ng-template>
       <button
-        class="btn btn-sm btn-outline-danger"
+        class="btn btn-sm btn-outline-danger float-right"
         (click)="deleteItem(item.id)"
       >
         del
